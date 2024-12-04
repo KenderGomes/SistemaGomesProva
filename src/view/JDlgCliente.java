@@ -12,6 +12,7 @@ import java.text.ParseException;
 import javax.swing.JOptionPane;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
+import tools.Util;
 
 /**
  *
@@ -34,7 +35,8 @@ public class JDlgCliente extends javax.swing.JDialog {
         initComponents();
         setTitle("Cadastro de Clientes");
         setLocationRelativeTo(null);
-        this.habilitar(false);
+        Util.habilitar(false, jTxtBairro, jTxtCep, jTxtCidade, jTxtCodigodoCliente, jTxtComplemento, jTxtEmail, jTxtEndereco, jTxtLogradouro, jTxtNome, jTxtNumero, 
+                jTxtTelefone, jTxtUF, jFmtCpf, jFmtDatadeNascimento, jFmtIdentidade, jCboSexo, jBtnConfirmar, jBtnCancelar);
         this.inserir = true;
         try {
             identidade = new MaskFormatter("##.###.###-#");
@@ -417,9 +419,12 @@ public class JDlgCliente extends javax.swing.JDialog {
     }//GEN-LAST:event_jTxtNomeActionPerformed
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
-        habilitar(true);
+        Util.habilitar(true, jTxtBairro, jTxtCep, jTxtCidade, jTxtCodigodoCliente, jTxtComplemento, jTxtEmail, jTxtEndereco, jTxtLogradouro, jTxtNome, jTxtNumero, 
+                jTxtTelefone, jTxtUF, jFmtCpf, jFmtDatadeNascimento, jFmtIdentidade, jCboSexo, jBtnCancelar, jBtnConfirmar);
+        Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
         this.inserir = true;
-        limpar();
+        Util.limpar(jTxtBairro, jTxtCep, jTxtCidade, jTxtCodigodoCliente, jTxtComplemento, jTxtEmail, jTxtEndereco, jTxtLogradouro, jTxtNome, jTxtNumero, 
+                jTxtTelefone, jTxtUF, jFmtCpf, jFmtDatadeNascimento, jFmtIdentidade, jCboSexo);
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jFmtDatadeNascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFmtDatadeNascimentoActionPerformed
@@ -431,7 +436,9 @@ public class JDlgCliente extends javax.swing.JDialog {
     }//GEN-LAST:event_jCboSexoActionPerformed
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
-        habilitar(true);
+        Util.habilitar(true, jTxtBairro, jTxtCep, jTxtCidade, jTxtCodigodoCliente, jTxtComplemento, jTxtEmail, jTxtEndereco, jTxtLogradouro, jTxtNome, jTxtNumero, 
+                jTxtTelefone, jTxtUF, jFmtCpf, jFmtDatadeNascimento, jFmtIdentidade, jCboSexo, jBtnCancelar, jBtnConfirmar);
+        Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
         this.inserir = false;
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
@@ -444,7 +451,8 @@ public class JDlgCliente extends javax.swing.JDialog {
         ClienteDAO clienteDAO = new ClienteDAO();
         clienteDAO.delete(cliente_khp);
         }
-        limpar();   
+        Util.limpar(jTxtBairro, jTxtCep, jTxtCidade, jTxtCodigodoCliente, jTxtComplemento, jTxtEmail, jTxtEndereco, jTxtLogradouro, jTxtNome, jTxtNumero, 
+                jTxtTelefone, jTxtUF, jFmtCpf, jFmtDatadeNascimento, jFmtIdentidade, jCboSexo);   
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
@@ -456,13 +464,19 @@ public class JDlgCliente extends javax.swing.JDialog {
         clienteDAO.update(cliente_khp);
         }
         
-        habilitar(false);
-        limpar();
+        Util.habilitar(false, jTxtBairro, jTxtCep, jTxtCidade, jTxtCodigodoCliente, jTxtComplemento, jTxtEmail, jTxtEndereco, jTxtLogradouro, jTxtNome, jTxtNumero, 
+                jTxtTelefone, jTxtUF, jFmtCpf, jFmtDatadeNascimento, jFmtIdentidade, jCboSexo, jBtnCancelar, jBtnConfirmar);
+        Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+        Util.limpar(jTxtBairro, jTxtCep, jTxtCidade, jTxtCodigodoCliente, jTxtComplemento, jTxtEmail, jTxtEndereco, jTxtLogradouro, jTxtNome, jTxtNumero, 
+                jTxtTelefone, jTxtUF, jFmtCpf, jFmtDatadeNascimento, jFmtIdentidade, jCboSexo);
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
-        habilitar(false);
-        limpar();
+        Util.habilitar(false, jTxtBairro, jTxtCep, jTxtCidade, jTxtCodigodoCliente, jTxtComplemento, jTxtEmail, jTxtEndereco, jTxtLogradouro, jTxtNome, jTxtNumero, 
+                jTxtTelefone, jTxtUF, jFmtCpf, jFmtDatadeNascimento, jFmtIdentidade, jCboSexo, jBtnCancelar, jBtnConfirmar);
+        Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+        Util.limpar(jTxtBairro, jTxtCep, jTxtCidade, jTxtCodigodoCliente, jTxtComplemento, jTxtEmail, jTxtEndereco, jTxtLogradouro, jTxtNome, jTxtNumero, 
+                jTxtTelefone, jTxtUF, jFmtCpf, jFmtDatadeNascimento, jFmtIdentidade, jCboSexo);
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed

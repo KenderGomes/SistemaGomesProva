@@ -4,6 +4,8 @@
  */
 package view;
 
+import dao.UsuariosDAO;
+import javax.swing.JOptionPane;
 import tools.Util;
 
 /**
@@ -18,8 +20,9 @@ public class JDlgPedidos extends javax.swing.JDialog {
     public JDlgPedidos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setTitle("Tabela de Pedidos");
         setLocationRelativeTo(null);
-        Util.habilitar(false, jTextField1, jTextField2, jBtnAlterarProd, jBtnCancelar, jBtnConfirmar, jBtnIncluirProd, jComboBox1, jComboBox2, jFormattedTextField1);
+        Util.habilitar(false, jTextField1, jTextField2, jBtnAlterarProd, jBtnCancelar, jBtnConfirmar, jBtnIncluirProd, jBtnExcluirProd,jComboBox1, jComboBox2, jFormattedTextField1);
         
     }
 
@@ -88,6 +91,11 @@ public class JDlgPedidos extends javax.swing.JDialog {
 
         jBtnIncluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/add.png"))); // NOI18N
         jBtnIncluir.setText("Incluir");
+        jBtnIncluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnIncluirActionPerformed(evt);
+            }
+        });
         jPanel1.add(jBtnIncluir);
 
         jBtnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/edit.png"))); // NOI18N
@@ -101,18 +109,38 @@ public class JDlgPedidos extends javax.swing.JDialog {
 
         jBtnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/trash.png"))); // NOI18N
         jBtnExcluir.setText("Excluir");
+        jBtnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnExcluirActionPerformed(evt);
+            }
+        });
         jPanel1.add(jBtnExcluir);
 
         jBtnConfirmar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/check.png"))); // NOI18N
         jBtnConfirmar.setText("Confirmar");
+        jBtnConfirmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnConfirmarActionPerformed(evt);
+            }
+        });
         jPanel1.add(jBtnConfirmar);
 
         jBtnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cross.png"))); // NOI18N
         jBtnCancelar.setText("Cancelar");
+        jBtnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnCancelarActionPerformed(evt);
+            }
+        });
         jPanel1.add(jBtnCancelar);
 
         jBtnPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search.png"))); // NOI18N
         jBtnPesquisar.setText("Pesquisar");
+        jBtnPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnPesquisarActionPerformed(evt);
+            }
+        });
         jPanel1.add(jBtnPesquisar);
 
         jBtnIncluirProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/add.png"))); // NOI18N
@@ -204,7 +232,7 @@ public class JDlgPedidos extends javax.swing.JDialog {
                         .addComponent(jBtnAlterarProd)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jBtnExcluirProd)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -212,24 +240,56 @@ public class JDlgPedidos extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
-        // TODO add your handling code here:
+        Util.habilitar(true, jTextField1, jTextField2, jBtnAlterarProd, jBtnCancelar, jBtnExcluirProd, jBtnConfirmar, jBtnIncluirProd, jComboBox1, jComboBox2, jFormattedTextField1, jTable1);
+        Util.habilitar(false, jBtnAlterar, jBtnExcluir, jBtnIncluir, jBtnPesquisar);
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnIncluirProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirProdActionPerformed
         JDlgPedidosProdutos jDlgPedidosProdutos = new JDlgPedidosProdutos(null, true);
         jDlgPedidosProdutos.setVisible(true);
-        Util.habilitar(false, jTextField1, jTextField2, jBtnAlterarProd, jBtnCancelar, jBtnConfirmar, jBtnIncluirProd, jComboBox1, jComboBox2, jFormattedTextField1);
+        Util.habilitar(true, jTextField1, jTextField2, jBtnAlterarProd, jBtnCancelar, jBtnConfirmar, jBtnIncluirProd, jComboBox1, jComboBox2, jFormattedTextField1, jTable1);
     }//GEN-LAST:event_jBtnIncluirProdActionPerformed
 
     private void jBtnAlterarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarProdActionPerformed
         JDlgPedidosProdutos jDlgPedidosProdutos = new JDlgPedidosProdutos(null, true);
         jDlgPedidosProdutos.setVisible(true);
+        Util.habilitar(true, jTextField1, jTextField2, jBtnAlterarProd, jBtnCancelar, jBtnConfirmar, jBtnIncluirProd, jComboBox1, jComboBox2, jFormattedTextField1, jTable1);
     }//GEN-LAST:event_jBtnAlterarProdActionPerformed
 
     private void jBtnExcluirProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirProdActionPerformed
         JDlgPedidosProdutos jDlgPedidosProdutos = new JDlgPedidosProdutos(null, true);
         jDlgPedidosProdutos.setVisible(true);
+        Util.habilitar(true, jTextField1, jTextField2, jBtnAlterarProd, jBtnCancelar, jBtnConfirmar, jBtnIncluirProd, jComboBox1, jComboBox2, jFormattedTextField1, jTable1);
+
     }//GEN-LAST:event_jBtnExcluirProdActionPerformed
+
+    private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
+        Util.habilitar(true, jTextField1, jTextField2, jBtnAlterarProd, jBtnCancelar, jBtnExcluirProd, jBtnConfirmar, jBtnIncluirProd, jComboBox1, jComboBox2, jFormattedTextField1, jTable1);
+        Util.habilitar(false, jBtnAlterar, jBtnExcluir, jBtnIncluir, jBtnPesquisar);
+    }//GEN-LAST:event_jBtnIncluirActionPerformed
+
+    private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
+        Util.habilitar(false, jTextField1, jTextField2, jBtnAlterarProd, jBtnExcluirProd, jBtnCancelar, jBtnConfirmar, jBtnIncluirProd, jComboBox1, jComboBox2, jFormattedTextField1, jTable1);
+        Util.habilitar(true, jBtnAlterar, jBtnExcluir, jBtnIncluir, jBtnPesquisar);
+    }//GEN-LAST:event_jBtnConfirmarActionPerformed
+
+    private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
+        Util.habilitar(false, jTextField1, jTextField2, jBtnAlterarProd, jBtnExcluirProd, jBtnCancelar, jBtnConfirmar, jBtnIncluirProd, jComboBox1, jComboBox2, jFormattedTextField1, jTable1);
+        Util.habilitar(true, jBtnAlterar, jBtnExcluir, jBtnIncluir, jBtnPesquisar);
+    }//GEN-LAST:event_jBtnCancelarActionPerformed
+
+    private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
+        int resp = JOptionPane.showConfirmDialog(null,
+            "Deseja excluir o registro?", "Aviso",
+            JOptionPane.YES_NO_OPTION);
+        Util.habilitar(true, jTextField1, jTextField2, jBtnAlterarProd, jBtnExcluirProd, jBtnIncluirProd, jComboBox1, jComboBox2, jFormattedTextField1, jTable1);
+        Util.habilitar(true, jBtnAlterar, jBtnExcluir, jBtnIncluir, jBtnPesquisar);
+    }//GEN-LAST:event_jBtnExcluirActionPerformed
+
+    private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed
+        JDlgPedidosProdutos jDlgPedidosProdutos = new JDlgPedidosProdutos(null, true);
+        jDlgPedidosProdutos.setVisible(true);
+    }//GEN-LAST:event_jBtnPesquisarActionPerformed
 
     /**
      * @param args the command line arguments

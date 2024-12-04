@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter; 
+import tools.Util;
 
 /**
  *
@@ -33,7 +34,8 @@ public class JDlgVendedores extends javax.swing.JDialog {
         initComponents();
         setTitle("Cadastro de Vendedores");
         setLocationRelativeTo(null);
-        this.habilitar(false);
+        Util.habilitar(false, jTxtBairro, jTxtCep, jTxtCidade, jTxtCodigoVendedor, jTxtComplemento, jTxtEmail, jTxtEndereco, jTxtLogradouro, jTxtNome, jTxtNumero, 
+                jTxtTelefone, jTxtUF, jFmtCpf, jFmtDatadeNascimento, jFmtIdentidade, jCboSexo, jBtnConfirmar, jBtnCancelar);
         this.inserir = true;
         try {
             identidade = new MaskFormatter("##.###.###-#");
@@ -456,7 +458,9 @@ public class JDlgVendedores extends javax.swing.JDialog {
     }
     
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
-        habilitar(true);
+        Util.habilitar(true, jTxtBairro, jTxtCep, jTxtCidade, jTxtCodigoVendedor, jTxtComplemento, jTxtEmail, jTxtEndereco, jTxtLogradouro, jTxtNome, jTxtNumero, 
+                jTxtTelefone, jTxtUF, jFmtCpf, jFmtDatadeNascimento, jFmtIdentidade, jCboSexo, jBtnConfirmar, jBtnCancelar);
+        Util.habilitar(false, jBtnAlterar, jBtnExcluir, jBtnIncluir, jBtnPesquisar);
         this.inserir = false;
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
@@ -469,7 +473,11 @@ public class JDlgVendedores extends javax.swing.JDialog {
         VendedoresDAO vendedoresDAO = new VendedoresDAO();
         vendedoresDAO.delete(vendedores_khp);
         }
-        limpar();  
+        Util.habilitar(true, jTxtBairro, jTxtCep, jTxtCidade, jTxtCodigoVendedor, jTxtComplemento, jTxtEmail, jTxtEndereco, jTxtLogradouro, jTxtNome, jTxtNumero, 
+                jTxtTelefone, jTxtUF, jFmtCpf, jFmtDatadeNascimento, jFmtIdentidade, jCboSexo, jBtnConfirmar, jBtnCancelar);
+        Util.habilitar(false, jBtnAlterar, jBtnExcluir, jBtnIncluir, jBtnPesquisar);
+        Util.limpar(jTxtBairro, jTxtCep, jTxtCidade, jTxtCodigoVendedor, jTxtComplemento, jTxtEmail, jTxtEndereco, jTxtLogradouro, jTxtNome, jTxtNumero, 
+                jTxtTelefone, jTxtUF, jFmtCpf, jFmtDatadeNascimento, jFmtIdentidade, jCboSexo, jBtnConfirmar, jBtnCancelar);  
 
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
@@ -482,13 +490,19 @@ public class JDlgVendedores extends javax.swing.JDialog {
         vendedoresDAO.update(vendedores_khp);
         }
         
-        habilitar(false);
-        limpar();
+        Util.habilitar(false, jTxtBairro, jTxtCep, jTxtCidade, jTxtCodigoVendedor, jTxtComplemento, jTxtEmail, jTxtEndereco, jTxtLogradouro, jTxtNome, jTxtNumero, 
+                jTxtTelefone, jTxtUF, jFmtCpf, jFmtDatadeNascimento, jFmtIdentidade, jCboSexo, jBtnConfirmar, jBtnCancelar);
+        Util.habilitar(true, jBtnAlterar, jBtnExcluir, jBtnIncluir, jBtnPesquisar);
+        Util.limpar(jTxtBairro, jTxtCep, jTxtCidade, jTxtCodigoVendedor, jTxtComplemento, jTxtEmail, jTxtEndereco, jTxtLogradouro, jTxtNome, jTxtNumero, 
+                jTxtTelefone, jTxtUF, jFmtCpf, jFmtDatadeNascimento, jFmtIdentidade, jCboSexo, jBtnConfirmar, jBtnCancelar);
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
-        habilitar(false);
-        limpar();
+        Util.habilitar(false, jTxtBairro, jTxtCep, jTxtCidade, jTxtCodigoVendedor, jTxtComplemento, jTxtEmail, jTxtEndereco, jTxtLogradouro, jTxtNome, jTxtNumero, 
+                jTxtTelefone, jTxtUF, jFmtCpf, jFmtDatadeNascimento, jFmtIdentidade, jCboSexo, jBtnConfirmar, jBtnCancelar);
+        Util.habilitar(true, jBtnAlterar, jBtnExcluir, jBtnIncluir, jBtnPesquisar);
+        Util.limpar(jTxtBairro, jTxtCep, jTxtCidade, jTxtCodigoVendedor, jTxtComplemento, jTxtEmail, jTxtEndereco, jTxtLogradouro, jTxtNome, jTxtNumero, 
+                jTxtTelefone, jTxtUF, jFmtCpf, jFmtDatadeNascimento, jFmtIdentidade, jCboSexo, jBtnConfirmar, jBtnCancelar);
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed
@@ -496,12 +510,19 @@ public class JDlgVendedores extends javax.swing.JDialog {
         jDlgVendedoresPesquisar.setTelaAnterior(this);
         jDlgVendedoresPesquisar.setVisible(true);
         
+        Util.habilitar(true, jTxtBairro, jTxtCep, jTxtCidade, jTxtCodigoVendedor, jTxtComplemento, jTxtEmail, jTxtEndereco, jTxtLogradouro, jTxtNome, jTxtNumero, 
+                jTxtTelefone, jTxtUF, jFmtCpf, jFmtDatadeNascimento, jFmtIdentidade, jCboSexo, jBtnConfirmar, jBtnCancelar);
+        Util.habilitar(false, jBtnAlterar, jBtnExcluir, jBtnIncluir, jBtnPesquisar);
+        
     }//GEN-LAST:event_jBtnPesquisarActionPerformed
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
-        habilitar(true);
+        Util.habilitar(true, jTxtBairro, jTxtCep, jTxtCidade, jTxtCodigoVendedor, jTxtComplemento, jTxtEmail, jTxtEndereco, jTxtLogradouro, jTxtNome, jTxtNumero, 
+                jTxtTelefone, jTxtUF, jFmtCpf, jFmtDatadeNascimento, jFmtIdentidade, jCboSexo, jBtnConfirmar, jBtnCancelar);
+        Util.habilitar(false, jBtnAlterar, jBtnExcluir, jBtnIncluir, jBtnPesquisar);
         this.inserir = true;
-        limpar();
+        Util.limpar(jTxtBairro, jTxtCep, jTxtCidade, jTxtCodigoVendedor, jTxtComplemento, jTxtEmail, jTxtEndereco, jTxtLogradouro, jTxtNome, jTxtNumero, 
+                jTxtTelefone, jTxtUF, jFmtCpf, jFmtDatadeNascimento, jFmtIdentidade, jCboSexo, jBtnConfirmar, jBtnCancelar);
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jFmtDatadeNascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFmtDatadeNascimentoActionPerformed

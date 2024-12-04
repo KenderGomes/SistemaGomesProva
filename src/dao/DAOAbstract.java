@@ -24,12 +24,12 @@ public abstract class DAOAbstract{
             Class.forName("com.mysql.cj.jdbc.Driver");
 
             String url, user, pass;
-            url = "jdbc:mysql://10.7.0.51:33062/db_kender_gomes";
-            user = "kender_gomes";
-            pass = "kender_gomes";
-//            url = "jdbc:mysql://localhost/db_kender_gomes";;
-//            user = "root";
-//            pass = "";
+//            url = "jdbc:mysql://10.7.0.51:33062/db_kender_gomes";
+//            user = "kender_gomes";
+//            pass = "kender_gomes";
+            url = "jdbc:mysql://localhost/db_kender_gomes";;
+            user = "root";
+            pass = "";
             cnt = DriverManager.getConnection(url, user, pass);
 
         } catch (SQLException ex) {
