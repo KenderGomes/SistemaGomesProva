@@ -16,6 +16,7 @@ public class JFrmPrincipal extends javax.swing.JFrame {
     public JFrmPrincipal() {
         initComponents();
         setExtendedState(MAXIMIZED_BOTH);
+        setLocationRelativeTo(null);
         setTitle("Venda de Calçados");
     }
 
