@@ -7,7 +7,6 @@ package view;
 import bean.Produtos_khp;
 import dao.ProdutosDAO;
 import javax.swing.JOptionPane;
-import tools.Util;
 
 /**
  *
@@ -27,7 +26,7 @@ public class JDlgProdutos extends javax.swing.JDialog {
         initComponents();
         setTitle("Cadastro de Produtos");
         setLocationRelativeTo(null);
-        Util.habilitar(false, jTxtCodigo, jTxtCor, jTxtDescricao, jTxtMarca, jTxtMaterial, jTxtPreco, jTxtTamanho, jBtnCancelar,jBtnConfirmar);
+        this.habilitar(false);
         this.inserir = true;
     }
     
@@ -282,9 +281,8 @@ public class JDlgProdutos extends javax.swing.JDialog {
     }
     
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
-        
-        Util.habilitar(true, jTxtCodigo, jTxtCor, jTxtDescricao, jTxtMarca, jTxtMaterial, jTxtPreco, jTxtTamanho, jBtnCancelar,jBtnConfirmar);
-        Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+        // TODO add your handling code here:
+        habilitar(true);
         limpar();
         
     }//GEN-LAST:event_jBtnIncluirActionPerformed
@@ -298,8 +296,7 @@ public class JDlgProdutos extends javax.swing.JDialog {
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
         // TODO add your handling code here:
-        Util.habilitar(true, jTxtCodigo, jTxtCor, jTxtDescricao, jTxtMarca, jTxtMaterial, jTxtPreco, jTxtTamanho, jBtnCancelar,jBtnConfirmar);
-        Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+        habilitar(true);
         this.inserir = false;
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
@@ -312,7 +309,7 @@ public class JDlgProdutos extends javax.swing.JDialog {
         ProdutosDAO produtosDAO = new ProdutosDAO();
         produtosDAO.delete(produtos_khp);
         }
-        Util.limpar(jTxtCodigo, jTxtCor, jTxtDescricao, jTxtMarca, jTxtMaterial, jTxtPreco, jTxtTamanho);  
+        limpar();  
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
@@ -325,14 +322,13 @@ public class JDlgProdutos extends javax.swing.JDialog {
         produtosDAO.update(produtos_khp);
         }
         habilitar(false);
-        Util.limpar(jTxtCodigo, jTxtCor, jTxtDescricao, jTxtMarca, jTxtMaterial, jTxtPreco, jTxtTamanho);
+        limpar();
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
         // TODO add your handling code here:
-        Util.habilitar(false, jTxtCodigo, jTxtCor, jTxtDescricao, jTxtMarca, jTxtMaterial, jTxtPreco, jTxtTamanho, jBtnCancelar,jBtnConfirmar);
-        Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
-        Util.limpar(jTxtCodigo, jTxtCor, jTxtDescricao, jTxtMarca, jTxtMaterial, jTxtPreco, jTxtTamanho);
+        habilitar(false);
+        limpar();
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jTxtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtCodigoActionPerformed

@@ -352,7 +352,7 @@ public class JDlgUsuarios extends javax.swing.JDialog {
         UsuariosDAO usuariosDAO = new UsuariosDAO();
         usuariosDAO.delete(usuarios_khp);
         }
-        Util.limpar(jTxtApelido, jTxtNome, jTxtCodigo, jCboNivel, jChbAtivo, jFmtCPF, jFmtDataNascimento, jPwfSenha);  
+        limpar();   
 
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
@@ -370,7 +370,8 @@ public class JDlgUsuarios extends javax.swing.JDialog {
         Util.habilitar(false, jTxtApelido, jTxtNome, jTxtCodigo, jFmtCPF, jFmtDataNascimento, jCboNivel,
     jChbAtivo, jPwfSenha, jBtnCancelar,jBtnConfirmar);
         Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
-        Util.limpar(jTxtApelido, jTxtNome, jTxtCodigo, jCboNivel, jChbAtivo, jFmtCPF, jFmtDataNascimento, jPwfSenha);       
+        limpar();
+        
         
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
@@ -379,16 +380,16 @@ public class JDlgUsuarios extends javax.swing.JDialog {
         Util.habilitar(false, jTxtApelido, jTxtNome, jTxtCodigo, jFmtCPF, jFmtDataNascimento, jCboNivel,
     jChbAtivo, jPwfSenha, jBtnCancelar,jBtnConfirmar);
         Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
-        Util.limpar(jTxtApelido, jTxtNome, jTxtCodigo, jCboNivel, jChbAtivo, jFmtCPF, jFmtDataNascimento, jPwfSenha);  
+        limpar();
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
         // TODO add your handling code here:
         this.inserir = true;
-        Util.habilitar(true, jTxtApelido, jTxtNome, jTxtCodigo, jFmtCPF, jFmtDataNascimento, jCboNivel,
+        Util.habilitar(false, jTxtApelido, jTxtNome, jTxtCodigo, jFmtCPF, jFmtDataNascimento, jCboNivel,
     jChbAtivo, jPwfSenha, jBtnCancelar,jBtnConfirmar);
-        Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
-        Util.limpar(jTxtApelido, jTxtNome, jTxtCodigo, jCboNivel, jChbAtivo, jFmtCPF, jFmtDataNascimento, jPwfSenha);  
+        Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+        limpar();
         jTxtCodigo.grabFocus();
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
