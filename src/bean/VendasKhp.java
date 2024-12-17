@@ -31,6 +31,7 @@ public class VendasKhp  implements java.io.Serializable {
 
      private int idVendasKhp;
      private ClienteKhp clienteKhp;
+     private VendedoresKhp vendedoresKhp;
      private Date dataVendaKhp;
      private Double valorTotalKhp;
      private int formaDePagamentoKhp;
@@ -38,8 +39,9 @@ public class VendasKhp  implements java.io.Serializable {
     public VendasKhp() {
     }
 
-    public VendasKhp(ClienteKhp clienteKhp, Date dataVendaKhp, Double valorTotalKhp, int formaDePagamentoKhp, Set vendasProdutosKhps) {
+    public VendasKhp(ClienteKhp clienteKhp, Date dataVendaKhp, Double valorTotalKhp, int formaDePagamentoKhp, Set vendasProdutosKhps, VendedoresKhp vendedoresKhp) {
        this.clienteKhp = clienteKhp;
+       this.vendedoresKhp = vendedoresKhp;
        this.dataVendaKhp = dataVendaKhp;
        this.valorTotalKhp = valorTotalKhp;
        this.formaDePagamentoKhp = formaDePagamentoKhp;
@@ -65,6 +67,16 @@ public class VendasKhp  implements java.io.Serializable {
     
     public void setClienteKhp(ClienteKhp clienteKhp) {
         this.clienteKhp = clienteKhp;
+    }
+    
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="fk_vendedores_khp")
+    public VendedoresKhp getVendedoresKhp() {
+        return this.vendedoresKhp;
+    }
+    
+    public void setVendedoresKhp(VendedoresKhp vendedoresKhp) {
+        this.vendedoresKhp = vendedoresKhp;
     }
 
     @Temporal(TemporalType.TIMESTAMP)
